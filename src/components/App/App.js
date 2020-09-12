@@ -4,6 +4,9 @@
 
 import React, {Component} from 'react';
 
+//import components
+import ButtonToStartForm from "../ButtonToStartForm/ButtonToStartForm";
+
 //import Styles
 import styles from './App.module.scss';
 
@@ -32,8 +35,8 @@ class App extends Component {
    render() {
       return (
          <div>
-            <div className={styles.test}>
-               mixitapp
+            <div className={styles.ButtonToStartFormPosition}>
+               <ButtonToStartForm />
             </div>
          </div>
       )
