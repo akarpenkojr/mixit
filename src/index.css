@@ -1,3 +1,19 @@
+html, body {
+	margin: 0;
+}
+
 body {
-	color: royalblue;
+	position: relative;
+	height: 100vh;
+	background: url("./bg_app.jpg") center no-repeat;
+	background-size: cover;
+}
+
+.wrapper-mask {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(40, 54, 74, .91);
 }

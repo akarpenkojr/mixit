@@ -3,9 +3,9 @@
  */
 
 import React, {Component} from 'react';
-import './App.scss';
-import Fab from '@material-ui/core/Button';
-import AddIcon from '@material-ui/core/Icon';
+
+//import Styles
+import styles from './App.module.scss';
 
 class App extends Component {
    state = {
@@ -32,14 +32,9 @@ class App extends Component {
    render() {
       return (
          <div>
-            <h1>Hello woasdasdrld!</h1>
-            <h2>{this.state.count}</h2>
-            <Fab
-                color="primary"
-                aria-label="add"
-            >
-               <AddIcon />
-            </Fab>
+            <div className={styles.test}>
+               mixitapp
+            </div>
          </div>
       )
    }
