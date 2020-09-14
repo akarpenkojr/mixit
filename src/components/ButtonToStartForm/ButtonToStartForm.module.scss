@@ -7,10 +7,10 @@
 	border-radius: 7px;
 	&:hover {
 		background-color: darken(#F5F5F5, 25%);
-		-webkit-transition: all 0.3s ease-in-out; /* Chrome 1-25, Safari 3.2+ */
-		-moz-transition: all 0.3s ease-in-out; /* Firefox 4-15 */
-		-o-transition: all 0.3s ease-in-out; /* Opera 10.50–12.00 */
-		transition: all 0.3s ease-in-out;
+		-webkit-transition: all 0.2s ease-in-out; /* Chrome 1-25, Safari 3.2+ */
+		-moz-transition: all 0.2s ease-in-out; /* Firefox 4-15 */
+		-o-transition: all 0.2s ease-in-out; /* Opera 10.50–12.00 */
+		transition: all 0.2s ease-in-out;
 		cursor: initial;
 		-o-transform: translateY(-1px);
 		-ms-transform: translateY(-1px);
