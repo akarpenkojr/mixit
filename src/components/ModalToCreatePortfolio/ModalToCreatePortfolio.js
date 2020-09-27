@@ -8,11 +8,34 @@ import React, {Component} from 'react'
 import styles from './ModalToCreatePortfolio.module.scss'
 
 class ModalToCreatePortfolio extends Component {
-   render() {
-      return (
-         <div>
+   state = {
+     newPortfolioModalIsOpen: this.props.newPortfolioModalIsOpen
+   };
 
-         </div>
+  componentDidMount() {
+    console.log('___---_-_!!!_-_---___', 'MOUNTED', this.state.count);
+  }
+
+   render() {
+
+      if (this.props.newPortfolioModalIsOpen) {
+         return (
+             <div>
+               <div
+                   className={styles.newPortfolioModal_exitArea}
+                   onClick={() => { this.props.updateData(false)}}
+               />
+
+               <div
+                   className={styles.newPortfolioModal_wrapper}
+                   onClick={() => { this.props.updateData(false)}}
+               />
+             </div>
+         )
+      }
+      return (
+          <div>
+          </div>
       )
    }
 }

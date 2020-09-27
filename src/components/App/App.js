@@ -6,14 +6,27 @@ import React, {Component} from 'react';
 
 //import components
 import ButtonToStartForm from "../ButtonToStartForm/ButtonToStartForm";
+import ModalToCreatePortfolio from "../ModalToCreatePortfolio/ModalToCreatePortfolio";
 
 //import Styles
 import styles from './App.module.scss';
 
 class App extends Component {
+
+   constructor(props) {
+      super(props);
+      this.state = { newPortfolioModalIsOpen: false };
+      this.updateData = this.updateData.bind(this);
+   }
+
    state = {
-      count: 0
+      newPortfolioModalIsOpen: false
    };
+
+   updateData = (value) => {
+      this.setState({ newPortfolioModalIsOpen: value })
+   };
+
 
    componentDidMount() {
       console.log('___---_-_!!!_-_---___', 'MOUNTED');
@@ -23,21 +36,13 @@ class App extends Component {
       console.log('___---_-_!!!_-_---___', 'UPDATED');
    }
 
-   // constructor(props) {
-   //    //    super(props);
-   //    //
-   //    //    this.state = {
-   //    //       count: 0
-   //    //    }
-   //    // }
-
-
    render() {
       return (
          <div>
             <div className={styles.ButtonToStartFormPosition}>
-               <ButtonToStartForm />
+               <ButtonToStartForm updateData={this.updateData} newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}/>
             </div>
+            <ModalToCreatePortfolio updateData={this.updateData} newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}/>
          </div>
       )
    }
