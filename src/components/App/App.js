@@ -5,8 +5,8 @@
 import React, {Component} from 'react';
 
 //import components
-import ButtonToStartForm from "../ButtonToStartForm/ButtonToStartForm";
-import ModalToCreatePortfolio from "../ModalToCreatePortfolio/ModalToCreatePortfolio";
+import ButtonToStartForm from "../ButtonToStartForm";
+import ModalForCreatingPortfolio from "../ModalForCreatingPortfolio";
 
 //import Styles
 import styles from './App.module.scss';
@@ -40,9 +40,16 @@ class App extends Component {
       return (
          <div>
             <div className={styles.ButtonToStartFormPosition}>
-               <ButtonToStartForm updateData={this.updateData} newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}/>
+               <ButtonToStartForm
+                   updateData={this.updateData}
+                   newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}
+               />
             </div>
-            <ModalToCreatePortfolio updateData={this.updateData} newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}/>
+            <ModalForCreatingPortfolio
+                updateData={this.updateData}
+                newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}
+
+            />
          </div>
       )
    }

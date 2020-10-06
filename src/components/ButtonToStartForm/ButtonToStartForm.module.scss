@@ -7,20 +7,19 @@
 	border-radius: 7px;
 	&:hover {
 		background-color: darken(#F5F5F5, 25%);
-		-webkit-transition: all 0.2s ease-in-out; /* Chrome 1-25, Safari 3.2+ */
-		-moz-transition: all 0.2s ease-in-out; /* Firefox 4-15 */
-		-o-transition: all 0.2s ease-in-out; /* Opera 10.50–12.00 */
-		transition: all 0.2s ease-in-out;
-		cursor: initial;
-		-o-transform: translateY(-1px);
-		-ms-transform: translateY(-1px);
-		-moz-transform: translateY(-1px);
-		-webkit-transform: translateY(-1px);
-		transform: translateY(-1px);
+		-webkit-transition: all 0.1s ease-in-out; /* Chrome 1-25, Safari 3.2+ */
+		-moz-transition: all 0.1s ease-in-out; /* Firefox 4-15 */
+		-o-transition: all 0.1s ease-in-out; /* Opera 10.50–12.00 */
+		transition: all 0.1s ease-in-out;
+		-o-transform: translateY(-3px);
+		-ms-transform: translateY(-3px);
+		-moz-transform: translateY(-3px);
+		-webkit-transform: translateY(-3px);
+		transform: translateY(-3px);
 	}
 
 	&:hover .startButton {
-		cursor: initial;
+		cursor: default;
 	}
 }
 
@@ -29,4 +28,5 @@
 	font-size: 19px;
 	color: #000000;
 	font-weight: 300;
+	cursor: default;
 }

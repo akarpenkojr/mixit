@@ -1,0 +1,23 @@
+.newPortfolioModal_wrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(5, 0, 8, .7);
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	display: flex;
+	justify-content: center;
+}
+
+.newPortfolioModal_main {
+	position: relative;
+	width: 849px;
+	height: 488px;
+	border-radius: 7px;
+	background-color: rgba(0, 0, 0, .9);
+	align-self: center;
+}

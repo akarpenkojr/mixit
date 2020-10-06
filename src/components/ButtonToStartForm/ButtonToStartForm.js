@@ -6,17 +6,18 @@ import React from 'react'
 import styles from './ButtonToStartForm.module.scss'
 
 function ButtonToStartForm(props) {
-	const newPortfolioModalIsOpen = props.newPortfolioModalIsOpen;
 
-   if (newPortfolioModalIsOpen === false) {
+
+   if (props.newPortfolioModalIsOpen === false) {
 		 return (
 				 <div>
-					 <div className={styles.startButtonWrapper} onClick={() => { props.updateData(true)}}>
+					 <div className={styles.startButtonWrapper} onClick={() => {
+					 	props.updateData(true)}}>
 						 <div className={styles.startButton}>Сформировать составной портфель</div>
 					 </div>
 				 </div>
 		 )
-	 } if (newPortfolioModalIsOpen === true) {
+	 } if (props.newPortfolioModalIsOpen === true) {
 		 return (
 				 <div>
 
