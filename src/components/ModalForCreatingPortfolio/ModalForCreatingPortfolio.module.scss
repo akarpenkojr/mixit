@@ -13,8 +13,10 @@
 	justify-content: center;
 }
 
-.newPortfolioModal_main {
+.newPortfolioModal_mainBlock {
 	position: relative;
+	display: flex;
+	flex-direction: column;
 	width: 849px;
 	height: 488px;
 	border-radius: 7px;
@@ -27,7 +29,7 @@
 	position: absolute;
 	right: 17px;
 	top: 17px;
-	width: 37px;
+	width: 51px;
 	cursor: pointer;
 }
 
@@ -81,4 +83,45 @@ label {
 
 .outer:hover .inner:after {
 	bottom: 0;
+}
+
+.newPortfolioModal_title {
+	margin: 30px auto auto;
+	color: #FFFFFF;
+	font-weight: 400;
+	font-size: 23px;
+}
+
+.newPortfolioModal_dataArea {
+	display: flex;
+	flex-direction: row;
+	padding-right: 61px;
+	padding-left: 61px;
+	width: 100%;
+	height: 100%;
+}
+
+.newPortfolioModal_inputArea {
+	display: flex;
+	flex-direction: column;
+}
+
+.newPortfolioModal_dataAreaTitle {
+	font-size: 18px;
+	color: #ABABAB;
+	font-weight: 300;
+	margin-top: 80px;
+}
+
+.newPortfolioModal_input {
+	width: 330px;
+	height: 55px;
+	border-radius: 7px;
+	border: none;
+	outline: none;
+	margin-top: 20px;
+	padding-left: 17px;
+	font-size: 17px;
+	font-weight: 300;
+	color: #000000;
 }
