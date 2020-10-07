@@ -90,6 +90,7 @@ label {
 	color: #FFFFFF;
 	font-weight: 400;
 	font-size: 23px;
+	height: 50px;
 }
 
 .newPortfolioModal_dataArea {
@@ -124,4 +125,14 @@ label {
 	font-size: 17px;
 	font-weight: 300;
 	color: #000000;
+}
+
+input.newPortfolioModal_input::-webkit-outer-spin-button,
+input.newPortfolioModal_input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input.newPortfolioModal_input[type=number] {
+	-moz-appearance: textfield;
 }
