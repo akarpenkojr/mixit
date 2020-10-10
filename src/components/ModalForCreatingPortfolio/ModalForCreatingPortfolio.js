@@ -16,25 +16,30 @@ class ModalForCreatingPortfolio extends Component {
 		this.state = {
 			newPortfolioModalIsOpen: this.props.newPortfolioModalIsOpen,
 			portfolioName: '',
-			portfolioTaxAmount: ''
+			portfolioTaxAmount: '',
+			modalTitle: ''
 		};
-		this.enterPortfolioName = this.enterPortfolioName.bind(this);
+
+		this.toMakeModalTitle = this.toMakeModalTitle.bind(this)
 	}
 
 	state = {
 
 	};
 
-	closeModal (event)  {
+	closeModal (event) {
 		if (event.target === event.currentTarget) {
 			this.props.updateData(false);
 			this.setState({portfolioName: ''});
 		}
 	};
 
-	enterPortfolioName(event) {
-
-	};
+	toMakeModalTitle() {
+		if (this.state.portfolioTaxAmount) {
+			return this.state.portfolioName + ' ( комиссия: ' + this.state.portfolioTaxAmount + '% )';
+		}
+		return this.state.portfolioName;
+	}
 
 	componentDidMount() {
 
@@ -51,7 +56,7 @@ class ModalForCreatingPortfolio extends Component {
 								</div>
 							</div>
 							<div className={styles.newPortfolioModal_title}>
-								{this.state.portfolioName}
+								{this.toMakeModalTitle()}
 							</div>
 							<div className={styles.newPortfolioModal_dataArea}>
 								<div className={styles.newPortfolioModal_inputArea}>
@@ -66,13 +71,17 @@ class ModalForCreatingPortfolio extends Component {
 											type="text"
 											className={styles.newPortfolioModal_input}
 											placeholder={'Введите имя портфеля'}
-											maxLength={27}
+											maxLength={33}
 											required
 									/>
 									<input
+											value={this.state.portfolioTaxAmount}
+											onChange={event => {
+												this.setState({portfolioTaxAmount: event.target.value});
+											}}
 											type="number"
 											className={styles.newPortfolioModal_input}
-											placeholder={'Введите размер комиссии портфеля'}
+											placeholder={'Введите размер комиссии портфеля, %'}
 											required
 									/>
 								</div>
