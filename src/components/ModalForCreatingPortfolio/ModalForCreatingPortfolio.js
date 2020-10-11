@@ -32,8 +32,8 @@ class ModalForCreatingPortfolio extends Component {
 	};
 
 	toMakeModalTitle() {
-		if (this.state.portfolioCommissionAmount) {
-			return this.state.portfolioName + ' ( комиссия: ' + this.state.portfolioCommissionAmount + '% )';
+		if (this.state.portfolioCommissionAmount !== '') {
+			return this.state.portfolioName + ' ( комиссия: ' + this.state.portfolioCommissionAmount.replace(/[.,]/, '.') + '% )';
 		}
 		return this.state.portfolioName;
 	}
@@ -44,14 +44,25 @@ class ModalForCreatingPortfolio extends Component {
 		if (!(+key) && key !== '0' && key !== '.' && key !== ',') {
 			return true
 		}
-		if (+(portfolioCommissionAmount.toString() + key) > 100) {
+		if (+(portfolioCommissionAmount + key) > 100) {
 			return true
 		}
-		if ((portfolioCommissionAmount.toString() + key).length > 7) {
+		if ((portfolioCommissionAmount + key).length > 7) {
 			return true
 		}
-		return portfolioCommissionAmount.toString()[0] === '0' && key === '0';
+		if (portfolioCommissionAmount === '' && !/[0-9]/.test(key)) {
+			return true
+		}
+		if (portfolioCommissionAmount[0] === '0' && /[0-9]/.test(key) && portfolioCommissionAmount.length === 1) {
+			return true
+		}
+		if ((portfolioCommissionAmount.split('').includes('.') || portfolioCommissionAmount.split('').includes(','))
+				&& (key === '.' || key === ',')) {
+			return true
+		}
+		return false
 	}
+
 
 	componentDidMount() {
 
@@ -97,9 +108,9 @@ class ModalForCreatingPortfolio extends Component {
 											onChange={event => {
 												this.setState({portfolioCommissionAmount: event.target.value});
 											}}
-											type="number"
+											type="text"
 											className={styles.newPortfolioModal_input}
-											placeholder={'Комиссия портфеля, 00.00000%'}
+											placeholder={'Комиссия портфеля, 0.00000%'}
 											required
 									/>
 								</div>
