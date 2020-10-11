@@ -16,13 +16,12 @@ class ModalForCreatingPortfolio extends Component {
 		this.state = {
 			newPortfolioModalIsOpen: this.props.newPortfolioModalIsOpen,
 			portfolioName: '',
-			portfolioTaxAmount: '',
+			portfolioCommissionAmount: '',
 			modalTitle: ''
 		};
 
-		this.regexp = /d{1,2}/m;
-
-		this.toMakeModalTitle = this.toMakeModalTitle.bind(this)
+		this.toMakeModalTitle = this.toMakeModalTitle.bind(this);
+		this.checkCommissionInputData = this.checkCommissionInputData.bind(this);
 	}
 
 	closeModal (event) {
@@ -33,16 +32,25 @@ class ModalForCreatingPortfolio extends Component {
 	};
 
 	toMakeModalTitle() {
-		if (this.state.portfolioTaxAmount) {
-			return this.state.portfolioName + ' ( комиссия: ' + this.state.portfolioTaxAmount + '% )';
+		if (this.state.portfolioCommissionAmount) {
+			return this.state.portfolioName + ' ( комиссия: ' + this.state.portfolioCommissionAmount + '% )';
 		}
 		return this.state.portfolioName;
 	}
 
-	checkTaxInputData(keyFrame) {
-		if (+(this.state.portfolioTaxAmount.toString() + keyFrame) > 100) {
-
+	// I want to add input validation for the entered commission. I think it is better for users and UX
+	// because they will see the template and the system will validate the data at the same time as they enter.
+	checkCommissionInputData(key, portfolioCommissionAmount) {
+		if (!(+key) && key !== '0' && key !== '.' && key !== ',') {
+			return true
 		}
+		if (+(portfolioCommissionAmount.toString() + key) > 100) {
+			return true
+		}
+		if ((portfolioCommissionAmount.toString() + key).length > 7) {
+			return true
+		}
+		return portfolioCommissionAmount.toString()[0] === '0' && key === '0';
 	}
 
 	componentDidMount() {
@@ -80,24 +88,14 @@ class ModalForCreatingPortfolio extends Component {
 											required
 									/>
 									<input
-											value={this.state.portfolioTaxAmount}
-											onKeyPress={event => {
-												// console.log('___---_-_!!!_-_---___', (this.state.portfolioTaxAmount.toString() + event.key).test(this.regexp));
-												if (!(+event.key) && event.key !== '0' && event.key !== '.' && event.key !== ',') {
-													event.preventDefault()
-												}
-												if (+(this.state.portfolioTaxAmount.toString() + event.key) > 100) {
-													event.preventDefault()
-												}
-												if ((this.state.portfolioTaxAmount.toString() + event.key).length > 7) {
-													event.preventDefault()
-												}
-												if (this.state.portfolioTaxAmount.toString()[0] === '0' && event.key === '0') {
+											value={this.state.portfolioCommissionAmount}
+											onKeyPress={(event)=> {
+												if (this.checkCommissionInputData(event.key, this.state.portfolioCommissionAmount)) {
 													event.preventDefault()
 												}
 											}}
 											onChange={event => {
-												this.setState({portfolioTaxAmount: event.target.value});
+												this.setState({portfolioCommissionAmount: event.target.value});
 											}}
 											type="number"
 											className={styles.newPortfolioModal_input}
