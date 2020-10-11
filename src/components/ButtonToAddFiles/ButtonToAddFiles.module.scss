@@ -1,11 +1,16 @@
-.AddButtonWrapper {
+label.addButton {
 	display: flex;
 	justify-content: center;
 	width: 253px;
 	height: 51px;
-	margin-top: 37px;
-	background-color: #39465A;
+	line-height: 51px;
+	margin-top: 33px;
+	font-size: 15px;
+	color: #FFFFFF;
+	font-weight: 400;
+	cursor: default;
 	border-radius: 7px;
+	background-color: #39465A;
 	&:hover {
 		background-color: lighten(#39465A, 15%);
 		-webkit-transition: all 0.1s ease-in-out; /* Chrome 1-25, Safari 3.2+ */
@@ -14,15 +19,11 @@
 		transition: all 0.1s ease-in-out;
 	}
 
-	&:hover .addButton {
+	&:hover label.addButton {
 		cursor: default;
 	}
 }
 
-.addButton {
-	align-self: center;
-	font-size: 19px;
-	color: #FFFFFF;
-	font-weight: 400;
-	cursor: default;
+input.input-file[type="file"] {
+	display: none;
 }

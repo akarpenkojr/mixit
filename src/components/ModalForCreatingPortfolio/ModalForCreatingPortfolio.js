@@ -36,6 +36,9 @@ class ModalForCreatingPortfolio extends Component {
 		if (this.state.portfolioCommissionAmount !== '') {
 			return this.state.portfolioName + ' ( комиссия: ' + this.state.portfolioCommissionAmount.replace(/[.,]/, '.') + '% )';
 		}
+		if (this.state.portfolioName === '' && this.state.portfolioCommissionAmount === '') {
+			return 'Данные формируемого портфеля'
+		}
 		return this.state.portfolioName;
 	}
 
@@ -76,7 +79,7 @@ class ModalForCreatingPortfolio extends Component {
 						<div className={styles.newPortfolioModal_mainBlock}>
 							<div className={styles.outer}>
 								<div className={styles.inner} onClick={(event) => this.closeModal(event)}>
-									<label onClick={(event) => this.closeModal(event)}>Закрыть</label>
+									<label className={styles['exit-label']} onClick={(event) => this.closeModal(event)}>Закрыть</label>
 								</div>
 							</div>
 							<div className={styles.newPortfolioModal_title}>
@@ -113,7 +116,7 @@ class ModalForCreatingPortfolio extends Component {
 											placeholder={'Комиссия портфеля, 0.00000%'}
 											required
 									/>
-									<ButtonToAddFiles/>
+									<ButtonToAddFiles />
 								</div>
 							</div>
 						</div>
