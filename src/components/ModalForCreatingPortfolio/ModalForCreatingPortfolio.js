@@ -20,12 +20,10 @@ class ModalForCreatingPortfolio extends Component {
 			modalTitle: ''
 		};
 
+		this.regexp = /d{1,2}/m;
+
 		this.toMakeModalTitle = this.toMakeModalTitle.bind(this)
 	}
-
-	state = {
-
-	};
 
 	closeModal (event) {
 		if (event.target === event.currentTarget) {
@@ -41,10 +39,17 @@ class ModalForCreatingPortfolio extends Component {
 		return this.state.portfolioName;
 	}
 
+	checkTaxInputData(keyFrame) {
+		if (+(this.state.portfolioTaxAmount.toString() + keyFrame) > 100) {
+
+		}
+	}
+
 	componentDidMount() {
 
 	}
 
+	// TODO: need to refactor onKeyPress(84)
 	render() {
 		if (this.props.newPortfolioModalIsOpen) {
 			return (
@@ -61,7 +66,7 @@ class ModalForCreatingPortfolio extends Component {
 							<div className={styles.newPortfolioModal_dataArea}>
 								<div className={styles.newPortfolioModal_inputArea}>
 									<div className={styles.newPortfolioModal_dataAreaTitle}>
-										Данные нового портфеля
+										Данные формируемого портфеля
 									</div>
 									<input
 											value={this.state.portfolioName}
@@ -70,18 +75,33 @@ class ModalForCreatingPortfolio extends Component {
 											}}
 											type="text"
 											className={styles.newPortfolioModal_input}
-											placeholder={'Введите имя портфеля'}
+											placeholder={'Имя портфеля'}
 											maxLength={33}
 											required
 									/>
 									<input
 											value={this.state.portfolioTaxAmount}
+											onKeyPress={event => {
+												// console.log('___---_-_!!!_-_---___', (this.state.portfolioTaxAmount.toString() + event.key).test(this.regexp));
+												if (!(+event.key) && event.key !== '0' && event.key !== '.' && event.key !== ',') {
+													event.preventDefault()
+												}
+												if (+(this.state.portfolioTaxAmount.toString() + event.key) > 100) {
+													event.preventDefault()
+												}
+												if ((this.state.portfolioTaxAmount.toString() + event.key).length > 7) {
+													event.preventDefault()
+												}
+												if (this.state.portfolioTaxAmount.toString()[0] === '0' && event.key === '0') {
+													event.preventDefault()
+												}
+											}}
 											onChange={event => {
 												this.setState({portfolioTaxAmount: event.target.value});
 											}}
 											type="number"
 											className={styles.newPortfolioModal_input}
-											placeholder={'Введите размер комиссии портфеля, %'}
+											placeholder={'Комиссия портфеля, 00.00000%'}
 											required
 									/>
 								</div>
