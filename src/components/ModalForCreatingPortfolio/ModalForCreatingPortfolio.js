@@ -5,6 +5,7 @@
 import React, {Component} from 'react'
 
 //import components
+import ButtonToAddFiles from "../ButtonToAddFiles";
 
 // import styles
 import styles from './ModalForCreatingPortfolio.module.scss'
@@ -112,6 +113,7 @@ class ModalForCreatingPortfolio extends Component {
 											placeholder={'Комиссия портфеля, 0.00000%'}
 											required
 									/>
+									<ButtonToAddFiles/>
 								</div>
 							</div>
 						</div>
