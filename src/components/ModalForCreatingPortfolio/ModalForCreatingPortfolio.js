@@ -68,7 +68,6 @@ class ModalForCreatingPortfolio extends Component {
 
 	}
 
-	// TODO: need to refactor onKeyPress(84)
 	render() {
 		if (this.props.newPortfolioModalIsOpen) {
 			return (
