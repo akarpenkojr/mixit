@@ -15,7 +15,7 @@ function FileItem(props) {
 
 	return (
 			<div className={styles.FileItem}>
-				{props.item}
+				{props.index + 1} – {props.item}
 			</div>
 	)
 }

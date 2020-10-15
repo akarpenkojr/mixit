@@ -130,6 +130,9 @@ class ModalForCreatingPortfolio extends Component {
 									/>
 								</div>
 								<div className={styles.newPortfolioModal_filesArea}>
+									<div className={styles.newPortfolioModal_filesAreaTitle}>
+										Добавленные файлы
+									</div>
 									<FilesList files={this.state.fileReader}/>
 								</div>
 							</div>

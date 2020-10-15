@@ -16,8 +16,8 @@ function FilesList({files}) {
 
 	return (
 			<div>
-				{files.map(item =>(
-						<FileItem item={item.name} key={item.id}/>
+				{files.map((item, index) =>(
+						<FileItem index={index} item={item.name} key={item.id}/>
 				))}
 			</div>
 	)
