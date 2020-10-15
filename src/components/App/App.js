@@ -2,6 +2,7 @@
  Created on 19.08.2020
  */
 
+// imports
 import React, {Component} from 'react';
 
 //import components
@@ -10,6 +11,7 @@ import ModalForCreatingPortfolio from "../ModalForCreatingPortfolio";
 
 //import Styles
 import styles from './App.module.scss';
+
 
 class App extends Component {
 

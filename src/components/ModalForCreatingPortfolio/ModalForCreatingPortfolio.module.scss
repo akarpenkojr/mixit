@@ -127,6 +127,12 @@ label.exit-label {
 	color: #000000;
 }
 
+.newPortfolioModal_filesArea {
+	width: 50%;
+	justify-items: flex-end;
+	justify-content: flex-end;
+}
+
 input.newPortfolioModal_input::-webkit-outer-spin-button,
 input.newPortfolioModal_input::-webkit-inner-spin-button {
 	-webkit-appearance: none;

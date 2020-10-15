@@ -2,12 +2,19 @@
  Created on 12.09.2020
  */
 
+// imports
 import React from 'react'
-import styles from './ButtonToAddFiles.module.scss'
 import { v4 as uuidv4 } from 'uuid';
 
+// import components
+
+
+// import styles
+import styles from './ButtonToAddFiles.module.scss'
+
+
 function ButtonToAddFiles(props) {
-	let fileReader = [];
+	let fileReader = [...props.fileReader];
 
 	// let handleFileRead = (i) => {
 	// 	const content = fileReader[i].title;
@@ -58,13 +65,13 @@ function ButtonToAddFiles(props) {
 
 	return (
 			<div >
-				<div
-						style={{backgroundColor: '#FFFFFF', margin: '10px'}}
-						onClick={() => {
-							console.log(fileReader);
-				}}>
-					READ DATA FROM FILE
-				</div>
+				{/*<div*/}
+				{/*		style={{backgroundColor: '#FFFFFF', margin: '10px'}}*/}
+				{/*		onClick={() => {*/}
+
+				{/*}}>*/}
+				{/*	READ DATA FROM FILE*/}
+				{/*</div>*/}
 				<label htmlFor={"upload-json"} className={styles.addButton} >Добавить файлы</label>
 				<input
 						className={styles['input-file']}
@@ -81,6 +88,8 @@ function ButtonToAddFiles(props) {
 						onChange={e => {
 							// console.log('___---_-_!!!_-_---___', typeof e.target.files);
 							handleFileChosen(e.target.files);
+							props.updateFilesList(fileReader);
+							console.log('___---_-_!!!_-_---___', fileReader);
 						}}
 				/>
 			</div>

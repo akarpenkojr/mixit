@@ -1,14 +1,16 @@
 /**
  Created on 12.09.2020
  */
-
+// imports
 import React, {Component} from 'react'
 
 //import components
 import ButtonToAddFiles from "../ButtonToAddFiles";
+import FilesList from "../FilesList";
 
 // import styles
 import styles from './ModalForCreatingPortfolio.module.scss'
+
 
 class ModalForCreatingPortfolio extends Component {
 
@@ -18,12 +20,18 @@ class ModalForCreatingPortfolio extends Component {
 			newPortfolioModalIsOpen: this.props.newPortfolioModalIsOpen,
 			portfolioName: '',
 			portfolioCommissionAmount: '',
-			modalTitle: ''
+			modalTitle: '',
+			fileReader: []
 		};
 
 		this.toMakeModalTitle = this.toMakeModalTitle.bind(this);
 		this.checkCommissionInputData = this.checkCommissionInputData.bind(this);
+		this.updateFilesList = this.updateFilesList.bind(this);
 	}
+
+	updateFilesList = (value) => {
+		this.setState({ fileReader: value })
+	};
 
 	closeModal (event) {
 		if (event.target === event.currentTarget) {
@@ -116,7 +124,13 @@ class ModalForCreatingPortfolio extends Component {
 											placeholder={'Комиссия портфеля, 0.00000%'}
 											required
 									/>
-									<ButtonToAddFiles />
+									<ButtonToAddFiles
+											updateFilesList={this.updateFilesList}
+											fileReader={this.state.fileReader}
+									/>
+								</div>
+								<div className={styles.newPortfolioModal_filesArea}>
+									<FilesList files={this.state.fileReader}/>
 								</div>
 							</div>
 						</div>
