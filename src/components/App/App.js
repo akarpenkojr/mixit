@@ -29,11 +29,11 @@ class App extends Component {
 
 
    componentDidMount() {
-      console.log('___---_-_!!!_-_---___', 'MOUNTED');
+
    }
 
    componentDidUpdate(prevProps, prevState, snapshot) {
-      console.log('___---_-_!!!_-_---___', 'UPDATED');
+
    }
 
    render() {
