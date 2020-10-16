@@ -17,13 +17,12 @@ class App extends Component {
 
    constructor(props) {
       super(props);
-      this.state = { newPortfolioModalIsOpen: false };
+      this.state = {
+         newPortfolioModalIsOpen: false
+      };
+
       this.updateData = this.updateData.bind(this);
    }
-
-   state = {
-      newPortfolioModalIsOpen: false
-   };
 
    updateData = (value) => {
       this.setState({ newPortfolioModalIsOpen: value })
