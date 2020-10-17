@@ -42,7 +42,8 @@ function ButtonToAddFiles(props) {
 		// }, {});
 	// };
 
-	let handleFileChosen = (files) => {
+	let handleFileChosen = (file) => {
+		let files = [...file];
 		if (files.length + fileReader.length > 5) {
 			return
 		}
@@ -85,11 +86,12 @@ function ButtonToAddFiles(props) {
 								event.preventDefault();
 							}
 						}}
-						onChange={e => {
+						onInput={e => {
+							let newFile = [...e.target.files];
 							// console.log('___---_-_!!!_-_---___', typeof e.target.files);
-							handleFileChosen(e.target.files);
+							handleFileChosen(newFile);
 							props.updateFilesList(fileReader);
-							console.log('___---_-_!!!_-_---___', fileReader);
+							e.target.value = null
 						}}
 				/>
 			</div>
