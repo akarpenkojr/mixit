@@ -3,7 +3,9 @@
  */
 
 // imports
-import React from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {deleteFile} from '../../store/action-creators'
 
 //import components
 import FileItem from "../FileItem";
@@ -12,15 +14,33 @@ import FileItem from "../FileItem";
 import styles from './FilesList.module.scss'
 
 
-function FilesList({files}) {
+class FilesList extends Component{
+	deleteFiles = () => {
+		this.props.deleteFileFromDispatch()
+	};
 
-	return (
-			<div>
-				{files.map((item, index) =>(
-						<FileItem index={index} name={item.name} key={item.id}/>
-				))}
-			</div>
-	)
+	render() {
+		return (
+				<div style={{color: 'white'}} >
+					{this.props.files ? this.props.files.map((item, index) =>(
+							<FileItem index={index} name={item.name} key={item.id} />
+					)) : ''}
+				</div>
+		)
+	}
 }
 
-export default FilesList
+const mapStateToProps = state => {
+	return {
+		files: state.userFiles
+	}
+};
+
+const mapDispatchToProps = {
+	deleteFileFromDispatch: deleteFile
+};
+
+export default connect(
+		mapStateToProps,
+		mapDispatchToProps
+)(FilesList)

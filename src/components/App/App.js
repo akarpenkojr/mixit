@@ -4,7 +4,8 @@
 
 // imports
 import React, {Component} from 'react';
-
+import {store} from "../../store";
+import {Provider} from 'react-redux'
 //import components
 import ButtonToStartForm from "../ButtonToStartForm";
 import ModalForCreatingPortfolio from "../ModalForCreatingPortfolio";
@@ -39,19 +40,21 @@ class App extends Component {
 
    render() {
       return (
-         <div>
-            <div className={styles.ButtonToStartFormPosition}>
-               <ButtonToStartForm
-                   updateData={this.updateData}
-                   newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}
-               />
-            </div>
-            <ModalForCreatingPortfolio
-                updateData={this.updateData}
-                newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}
+          <Provider store={store}>
+             <div>
+                <div className={styles.ButtonToStartFormPosition}>
+                   <ButtonToStartForm
+                       updateData={this.updateData}
+                       newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}
+                   />
+                </div>
+                <ModalForCreatingPortfolio
+                    updateData={this.updateData}
+                    newPortfolioModalIsOpen={this.state.newPortfolioModalIsOpen}
 
-            />
-         </div>
+                />
+             </div>
+          </Provider>
       )
    }
 }

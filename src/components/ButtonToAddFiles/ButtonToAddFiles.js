@@ -14,7 +14,7 @@ import styles from './ButtonToAddFiles.module.scss'
 
 
 function ButtonToAddFiles(props) {
-	let fileReader = [...props.fileReader];
+	const fileReader = [...props.fileReader];
 
 	// let handleFileRead = (i) => {
 	// 	const content = fileReader[i].title;
@@ -42,7 +42,7 @@ function ButtonToAddFiles(props) {
 		// }, {});
 	// };
 
-	let handleFileChosen = (file) => {
+	const handleFileChosen = (file) => {
 		let files = [...file];
 		if (files.length + fileReader.length > 5) {
 			return
