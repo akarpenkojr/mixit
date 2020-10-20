@@ -5,7 +5,6 @@
 // imports
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {deleteFile} from '../../store/action-creators'
 
 //import components
 import FileItem from "../FileItem";
@@ -15,9 +14,6 @@ import styles from './FilesList.module.scss'
 
 
 class FilesList extends Component{
-	deleteFiles = () => {
-		this.props.deleteFileFromDispatch()
-	};
 
 	render() {
 		return (
@@ -36,11 +32,6 @@ const mapStateToProps = state => {
 	}
 };
 
-const mapDispatchToProps = {
-	deleteFileFromDispatch: deleteFile
-};
-
 export default connect(
-		mapStateToProps,
-		mapDispatchToProps
+		mapStateToProps
 )(FilesList)
