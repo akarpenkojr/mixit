@@ -6,3 +6,12 @@ export const deleteFile = (fileIndex) => {
 		}
 	}
 };
+
+export const addFile = (newFiles) => {
+	return {
+		type: 'ADD_FILE_FROM_LIST',
+		payload: {
+			files: newFiles
+		}
+	}
+};

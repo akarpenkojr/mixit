@@ -21,17 +21,11 @@ class ModalForCreatingPortfolio extends Component {
 			portfolioName: '',
 			portfolioCommissionAmount: '',
 			modalTitle: '',
-			fileReader: []
 		};
 
 		this.toMakeModalTitle = this.toMakeModalTitle.bind(this);
 		this.checkCommissionInputData = this.checkCommissionInputData.bind(this);
-		this.updateFilesList = this.updateFilesList.bind(this);
 	}
-
-	updateFilesList = (value) => {
-		this.setState({ fileReader: value })
-	};
 
 	closeModal (event) {
 		if (event.target === event.currentTarget) {
@@ -124,10 +118,7 @@ class ModalForCreatingPortfolio extends Component {
 											placeholder={'Комиссия портфеля, 0.00000%'}
 											required
 									/>
-									<ButtonToAddFiles
-											updateFilesList={this.updateFilesList}
-											fileReader={this.state.fileReader}
-									/>
+									<ButtonToAddFiles />
 								</div>
 								<div className={styles.newPortfolioModal_filesArea}>
 									<div className={styles.newPortfolioModal_filesAreaTitle}>

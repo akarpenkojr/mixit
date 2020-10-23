@@ -4,18 +4,19 @@
 
 // imports
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import {connect} from "react-redux";
+import {fileChosen} from "../../side-functions/fileChosen";
+import {addFile} from "../../store/action-creators";
 
 // import components
-
 
 // import styles
 import styles from './ButtonToAddFiles.module.scss'
 
 
 function ButtonToAddFiles(props) {
-	const fileReader = [...props.fileReader];
 
+	const handleFileChosen = fileChosen;
 	// let handleFileRead = (i) => {
 	// 	const content = fileReader[i].title;
 	// 	console.log(content)
@@ -42,37 +43,30 @@ function ButtonToAddFiles(props) {
 		// }, {});
 	// };
 
-	const handleFileChosen = (file) => {
-		let files = [...file];
-		if (files.length + fileReader.length > 5) {
-			return
-		}
-		let length = fileReader.length;
-		for (let i = fileReader.length; i<files.length + length; i++) {
-			for (let y = 0; y<files.length; y++) {
-				fileReader[i] = {
-					id: uuidv4(),
-					data: undefined,
-					name: undefined
-				};
-				fileReader[i].data = new FileReader();
-
-				// fileReader[i].data.onloadend = handleFileRead(i - fileReader.length);
-				fileReader[i].data.readAsText(files[y]);
-				fileReader[i].name = files[y].name
-			}
-		}
-	};
+	// const handleFileChosen = (file) => {
+	// 	let files = [...file];
+	// 	if (files.length + fileReader.length > 5) {
+	// 		return
+	// 	}
+	// 	let length = fileReader.length;
+	// 	for (let i = fileReader.length; i<files.length + length; i++) {
+	// 		for (let y = 0; y<files.length; y++) {
+	// 			fileReader[i] = {
+	// 				id: uuidv4(),
+	// 				data: undefined,
+	// 				name: undefined
+	// 			};
+	// 			fileReader[i].data = new FileReader();
+	//
+	// 			// fileReader[i].data.onloadend = handleFileRead(i - fileReader.length);
+	// 			fileReader[i].data.readAsText(files[y]);
+	// 			fileReader[i].name = files[y].name
+	// 		}
+	// 	}
+	// };
 
 	return (
 			<div >
-				{/*<div*/}
-				{/*		style={{backgroundColor: '#FFFFFF', margin: '10px'}}*/}
-				{/*		onClick={() => {*/}
-
-				{/*}}>*/}
-				{/*	READ DATA FROM FILE*/}
-				{/*</div>*/}
 				<label htmlFor={"upload-json"} className={styles.addButton} >Добавить файлы</label>
 				<input
 						className={styles['input-file']}
@@ -82,15 +76,14 @@ function ButtonToAddFiles(props) {
 						multiple
 						accept={'.json'}
 						onClick={event => {
-							if (fileReader.length >= 5) {
+							if (props.files.length >= 5) {
 								event.preventDefault();
 							}
 						}}
 						onInput={e => {
-							let newFile = [...e.target.files];
-							// console.log('___---_-_!!!_-_---___', typeof e.target.files);
-							handleFileChosen(newFile);
-							props.updateFilesList(fileReader);
+							const newFiles = [...e.target.files];
+							const addedFiles = [...props.files];
+							handleFileChosen(addedFiles, newFiles, props.toAddThisFiles);
 							e.target.value = null
 						}}
 				/>
@@ -98,4 +91,15 @@ function ButtonToAddFiles(props) {
 	)
 }
 
-export default ButtonToAddFiles
+const mapStateToProps = state => ({
+	files: state.userFiles
+});
+
+const mapDispatchToProps = {
+	toAddThisFiles: addFile
+};
+
+export default connect(
+		mapStateToProps,
+		mapDispatchToProps
+)(ButtonToAddFiles)
