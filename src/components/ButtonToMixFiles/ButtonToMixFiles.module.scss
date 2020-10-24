@@ -1,18 +1,18 @@
-label.addButton {
+.mixButton {
 	display: flex;
 	justify-content: center;
 	width: 253px;
 	height: 51px;
 	line-height: 51px;
-	margin-top: 33px;
+	margin-top: 27px;
 	font-size: 15px;
 	color: #FFFFFF;
 	font-weight: 400;
 	cursor: default;
 	border-radius: 7px;
-	background-color: #39465A;
+	background-color: #B5855C;
 	&:hover {
-		background-color: lighten(#39465A, 15%);
+		background-color: lighten(#B5855C, 15%);
 		-webkit-transition: all 0.1s ease-in-out; /* Chrome 1-25, Safari 3.2+ */
 		-moz-transition: all 0.1s ease-in-out; /* Firefox 4-15 */
 		-o-transition: all 0.1s ease-in-out; /* Opera 10.50–12.00 */
@@ -22,8 +22,4 @@ label.addButton {
 	&:hover label.addButton {
 		cursor: default;
 	}
-}
-
-input.input-file[type="file"] {
-	display: none;
 }

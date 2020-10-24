@@ -17,20 +17,14 @@ function ButtonToMixFiles(props) {
 
 	return (
 			<div >
-				<label htmlFor={"upload-json"} className={styles.addButton} >Добавить файлы</label>
-				<input
-						className={styles['input-file']}
-						id="upload-json"
-						type="file"
-						name="file"
-						multiple
-						accept={'.json'}
+				<div
+						className={styles.mixButton}
 						onClick={event => {
-							if (props.files.length >= 5) {
-								event.preventDefault();
-							}
+							console.log('___---_-_!!!_-_---___', props.files[0].data.result);
 						}}
-				/>
+				>
+					Сформировать файл портфеля
+				</div>
 			</div>
 	)
 }
