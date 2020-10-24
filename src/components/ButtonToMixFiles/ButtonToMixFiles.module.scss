@@ -1,0 +1,29 @@
+label.addButton {
+	display: flex;
+	justify-content: center;
+	width: 253px;
+	height: 51px;
+	line-height: 51px;
+	margin-top: 33px;
+	font-size: 15px;
+	color: #FFFFFF;
+	font-weight: 400;
+	cursor: default;
+	border-radius: 7px;
+	background-color: #39465A;
+	&:hover {
+		background-color: lighten(#39465A, 15%);
+		-webkit-transition: all 0.1s ease-in-out; /* Chrome 1-25, Safari 3.2+ */
+		-moz-transition: all 0.1s ease-in-out; /* Firefox 4-15 */
+		-o-transition: all 0.1s ease-in-out; /* Opera 10.50–12.00 */
+		transition: all 0.1s ease-in-out;
+	}
+
+	&:hover label.addButton {
+		cursor: default;
+	}
+}
+
+input.input-file[type="file"] {
+	display: none;
+}

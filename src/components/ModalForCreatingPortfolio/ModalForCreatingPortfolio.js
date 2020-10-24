@@ -7,9 +7,11 @@ import React, {Component} from 'react'
 //import components
 import ButtonToAddFiles from "../ButtonToAddFiles";
 import FilesList from "../FilesList";
+import ButtonToMixFiles from "../ButtonToMixFiles";
 
 // import styles
 import styles from './ModalForCreatingPortfolio.module.scss'
+import {connect} from "react-redux";
 
 
 class ModalForCreatingPortfolio extends Component {
@@ -124,7 +126,10 @@ class ModalForCreatingPortfolio extends Component {
 									<div className={styles.newPortfolioModal_filesAreaTitle}>
 										Добавленные файлы:
 									</div>
-									<FilesList files={this.state.fileReader}/>
+									<FilesList />
+									<div>
+										{this.props.files.length ? <ButtonToMixFiles /> : ''}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -138,6 +143,11 @@ class ModalForCreatingPortfolio extends Component {
 	}
 }
 
-export default ModalForCreatingPortfolio
+const mapStateToProps = state => ({
+	files: state.userFiles
+});
 
 
+export default connect(
+		mapStateToProps
+)(ModalForCreatingPortfolio)
