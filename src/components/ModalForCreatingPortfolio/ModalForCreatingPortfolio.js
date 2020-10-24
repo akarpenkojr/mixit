@@ -39,7 +39,7 @@ class ModalForCreatingPortfolio extends Component {
 			return this.state.portfolioName + ' ( комиссия: ' + this.state.portfolioCommissionAmount.replace(/[.,]/, '.') + '% )';
 		}
 		if (this.state.portfolioName === '' && this.state.portfolioCommissionAmount === '') {
-			return 'Данные формируемого портфеля'
+			return 'Формирование нового портфеля'
 		}
 		return this.state.portfolioName;
 	}
