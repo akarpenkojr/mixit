@@ -59,4 +59,6 @@ class App extends Component {
    }
 }
 
+window.store = store;
+
 export default App

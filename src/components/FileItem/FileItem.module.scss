@@ -1,6 +1,20 @@
-.FileItem {
-	color: #FFFFFF;
+.FileBlock {
 	margin-top: 13px;
-	font-weight: 300;
-	font-size: 15px;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	height: 19px;
+	line-height: 19px;
+	&__item {
+		color: #FFFFFF;
+		font-weight: 300;
+		font-size: 16px;
+	}
+	&__itemDelete {
+		color: #B5855C;
+		margin-left: auto;
+		margin-right: 0;
+		font-size: 17px;
+		font-weight: 300;
+	}
 }

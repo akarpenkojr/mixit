@@ -17,10 +17,14 @@ function FileItem(props) {
 
 	return (
 			<div>
-				<div className={styles.FileItem}>
-					{props.index + 1} – {props.name.length <= 31 ? props.name : props.name.slice(0, 13) + '...' + props.name.slice(-16)}
+				<div className={styles.FileBlock}>
+					<div className={styles.FileBlock__item}>
+						{props.index + 1} – {props.name.length <= 31 ? props.name : props.name.slice(0, 13) + '...' + props.name.slice(-16)}
+					</div>
+					<div className={styles.FileBlock__itemDelete} onClick={() => props.deleteThisFile(props.index)}>&times;</div>
 				</div>
-				<div style={{color: 'white'}} onClick={() => props.deleteThisFile(props.index)}>XXX</div>
+
+
 			</div>
 
 	)
