@@ -17,7 +17,7 @@ class FilesList extends Component{
 
 	render() {
 		return (
-				<div style={{color: 'white'}} >
+				<div style={{color: 'white', height: '154px'}} >
 					{this.props.files ? this.props.files.map((item, index) =>(
 							<FileItem index={index} name={item.name} key={item.id} />
 					)) : ''}

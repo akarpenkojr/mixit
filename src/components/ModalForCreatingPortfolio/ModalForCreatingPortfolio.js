@@ -127,7 +127,7 @@ class ModalForCreatingPortfolio extends Component {
 										Добавленные файлы:
 									</div>
 									<FilesList />
-									<div>
+									<div style={{display: 'flex', justifyContent: 'end'}}>
 										{this.props.files.length ? <ButtonToMixFiles /> : ''}
 									</div>
 								</div>
